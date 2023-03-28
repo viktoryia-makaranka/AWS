@@ -1,11 +1,12 @@
-service: my-store-app
+service: aws-app-service
 
 frameworkVersion: "3"
 
 provider:
   name: aws
   runtime: nodejs14.x
-  region: eu-west-1
+  region: us-east-1
+  profile: sandx
   # setup profile for AWS CLI.
   # profile: node-aws
 
@@ -19,7 +20,7 @@ plugins:
 
 custom:
   client:
-    bucketName: my-store-app
+    bucketName: aws-react-app-s3
     distributionFolder: dist
   s3BucketName: ${self:custom.client.bucketName}
 
@@ -47,8 +48,7 @@ resources:
     WebAppS3BucketPolicy:
       Type: AWS::S3::BucketPolicy
       Properties:
-        Bucket:
-          Ref: WebAppS3Bucket
+        Bucket: !Ref WebAppS3Bucket
         PolicyDocument:
           Statement:
             - Sid: "AllowCloudFrontAccessIdentity"
