@@ -1,5 +1,5 @@
 {
-  "name": "aws-app-service",
+  "name": "aws-front",
   "version": "1.0.0",
   "private": true,
   "scripts": {
