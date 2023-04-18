@@ -1,4 +1,4 @@
-service: aws-app-service
+service: aws-front
 
 frameworkVersion: "3"
 
@@ -48,7 +48,8 @@ resources:
     WebAppS3BucketPolicy:
       Type: AWS::S3::BucketPolicy
       Properties:
-        Bucket: !Ref WebAppS3Bucket
+        Bucket:
+          Ref: WebAppS3Bucket
         PolicyDocument:
           Statement:
             - Sid: "AllowCloudFrontAccessIdentity"
